@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NISPAE</title>
+  <style>
+    #image-container {
+      display: flex;
+      flex-direction: row;
+      overflow-x: hidden;
+      width: 100%;
+      height: 50%;
+    }
+
+    #image-container img {
+      height: 100%;
+      display: inline-block;
+      margin-right: 0px;
+    }
+  </style>
+  <!--MQTT.js-->
+  <script type="text/javascript" src="https://unpkg.com/mqtt@4.3.7/dist/mqtt.min.js"></script>
+  <!--Base64 d/encoder https://www.npmjs.com/package/base64-js MIT-->
+  <script type="text/javascript" src="./js/base64js.min.js"></script>
+
+</head>
+
+<body>
+  <div id="image-container"></div>
+  <script type="text/javascript" src="./js/datavizscroll.js"></script>
+</body>
+
+</html>

@@ -119,3 +119,7 @@ vmax_value = 0 #max dB value for the output image
 #Choose the type of Spectrogram to create: 1- Mel Librosa ; 2- Linear[todo] 
 spectro = 1
 ```
+
+## Visualisation
+
+There is a straightforward example in the `dataViz` folder that demonstrates how to consume spectrogram images from MQTT. Whenever a message is received, a new `img` element is created and appended to the `image-container` div. Broker address (ws or wss) and port need to be changes.
