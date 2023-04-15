@@ -1,8 +1,8 @@
-# NISPAE - Non Intrusive Spectrogram Pi Analyses on the Edge - 
+# NISPAE - Non Intrusive SPectrogram Analyses on the Edge - 
 
-NISPAE is a Python application for performing Non-Intrusive Spectrogram Pi Analyses on the Edge.
+NISPAE is a Python application for performing Non-Intrusive SPectrogram Analyses on the Edge.
 It is designed to analyze audio signals in real-time, without the need to collect any audio recordings, and extract relevant features using the short-time Fourier transform (STFT). This solution is particularly useful for recording in public places where concerns regarding privacy in regards to actual audio recording may arise.
-NISPAE is optimized for running on edge devices with limited computational resources, such as Raspberry Pi (currently tested Rpi4). 
+NISPAE is optimized for running on edge devices with limited computational resources, such as Raspberry Pi (currently tested on Rpi 4 and Rpi 3B+). 
 
 ![spectrogram created using NISPAE](./docs/img/spectro.jpg)
 
