@@ -1,7 +1,7 @@
 # NISPAE - Non Intrusive SPectrogram Analyses on the Edge - 
 
 NISPAE is a Python application for performing Non-Intrusive SPectrogram Analyses on the Edge.
-It is designed to analyze audio signals in real-time, without the need to collect any audio recordings, and extract relevant features using the short-time Fourier transform (STFT). This solution is particularly useful for recording in public places where concerns regarding privacy in regards to actual audio recording may arise.
+It is designed to analyse audio signals in real-time, without the need to collect any audio recordings, and extract relevant features using the short-time Fourier transform (STFT). This solution is particularly useful for recording in public places where concerns regarding privacy in regards to actual audio recording may arise.
 NISPAE is optimized for running on edge devices with limited computational resources, such as Raspberry Pi (currently tested on Rpi 4 and Rpi 3B+). 
 
 ![spectrogram created using NISPAE](./docs/img/spectro.jpg)
@@ -60,23 +60,26 @@ pip install paho-mqtt
 
 Install Librosa 
 
->> Note: Librosa cannot be installed directly on Raspberry Pi due to certain packages incompatibilities. However, there are several tutorials available online that provide a detailed process to overcome this limitation. Below are the main steps:
+>> Note: Librosa cannot be installed directly on Raspberry Pi due to certain packages incompatibilities. However, there are several tutorials available online that provide a detailed process to overcome this limitation using Virtual Python Environment. Below are the main steps:
 
 ```bash
-apt install libblas-dev llvm python3-pip python3-scipy
-
 pip install virtualenv
 ```
+
 >> Note: Add virtual env to the PATH E.g.: PATH=$PATH:/home/pi/.local/bin
 
+
 ```bash
-#create the a virtualenv
+#This packages need to be installed globally
+apt install libblas-dev llvm python3-pip python3-scipy
+
+#create a Virtual Python Environment named `env`
 virtualenv --system-site-packages -p python3 env
 
-# enter the virtualenv; use `deactivate` to exit the virtualenv
+# enter the Virtual Python Environment; use `deactivate` to exit the virtualenv
 source env/bin/activate
 
-#install llvmlite, numba and librosa
+#install llvmlite, numba and librosa in the virtualenv
 pip install llvmlite
 pip install numba
 pip install librosa
@@ -84,18 +87,19 @@ pip install librosa
 
 # NIEPAE settings
 
-Most of the variables of the Python script do not need to be changed, but depending on the microphone used it will be necessary to change the input audio form the ```SoX``` command line, the default value used is `alsa hw:1,0`. 
+Most of the variables in the Python script `nispae.py` do not need to be changed, but depending on the microphone used it will be necessary to change the input audio from the `SoX` command line, the default value used is `alsa hw:1,0`. 
 
-To now the recording devices connected use `arecord -l` (if no results, but the device is connected, run it again using `sudo`)
+To know which recording devices are currently connected use the command `arecord -l` (if no results are displayed, but the device is properly connected, run it again as `sudo arecord -l`)
 
 Other variables:
+
 ```py
 # Define the MQTT broker parameters 
-broker_address = "MQTT.address.of.the.broker"
-broker_port = port
-# username = # to be set in ENV FILE
-# password = # to be set in ENV FILE
-topic = "topic/where/publish"
+broker_address = os.getenv('BROKER_ADDRESS')
+broker_port = int(os.getenv('BROKER_PORT'))
+username = os.getenv('USERNAME')
+password = os.getenv('PASSWORD')
+topic = os.getenv('TOPIC')
 
 # Generate a random client ID
 client_id = f"python-{random.randint(0, 1000000)}"
@@ -120,6 +124,10 @@ vmax_value = 0 #max dB value for the output image
 spectro = 1
 ```
 
+>> Note: As the Librosa deps are installed using Virtual Python Environment, to run the Python script be sure to be in the Virtual Environment (e.g. using `source env/bin/activate`)  
+
 ## Visualisation
 
-There is a straightforward example in the `dataViz` folder that demonstrates how to consume spectrogram images from MQTT. Whenever a message is received, a new `img` element is created and appended to the `image-container` div. Broker address (ws or wss) and port need to be changes.
+There is a straightforward example in the `dataViz` folder that demonstrates how to consume spectrogram images from MQTT. Whenever a message is received, a new `img` element is created and appended to the `image-container` div. 
+
+>>Note: Broker address (as `ws` WebSocket or `wss` Secure WebSocket) and port need to be changes.
