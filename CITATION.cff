@@ -7,6 +7,9 @@ message: >-
   If you use this software, please cite it using the
   metadata from this file.
 type: software
+identifiers:
+  - type: doi
+    value: 10.5522/04/29851535
 authors:
   - given-names: Valerio
     family-names: Signorelli
