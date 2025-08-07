@@ -19,7 +19,7 @@ This project uses the following libraries
 
 To set up the Raspberry Pi, follow these steps:
 
-- Prepare an SD card with the RaspberryPi OS Lite (Bullseye) and configure WiFi settings, enable SSH, set Host, user and password.
+- Prepare an SD card with the Raspberry Pi OS Lite (Bullseye) and configure WiFi settings, enable SSH, set Host, user and password.
 - Run the command ```apt-get update & upgrade``` to update and upgrade the system
 
 ## Prepare the environment
@@ -60,13 +60,13 @@ pip install paho-mqtt
 
 Install Librosa 
 
->> Note: Librosa cannot be installed directly on Raspberry Pi due to certain packages incompatibilities. However, there are several tutorials available online that provide a detailed process to overcome this limitation using Virtual Python Environment. Below are the main steps:
+>> Note: Librosa cannot be installed directly on Raspberry Pi due to certain package incompatibilities. However, there are several tutorials available online that provide a detailed process to overcome this limitation using a Virtual Python Environment. Below are the main steps:
 
 ```bash
 pip install virtualenv
 ```
 
->> Note: Add virtual env to the PATH E.g.: PATH=$PATH:/home/pi/.local/bin
+>> Note: Add virtual env to the PATH e.g.: PATH=$PATH:/home/pi/.local/bin
 
 
 ```bash
@@ -87,9 +87,9 @@ pip install librosa
 
 # NIEPAE settings
 
-Most of the variables in the Python script `nispae.py` do not need to be changed, but depending on the microphone used it will be necessary to change the input audio from the `SoX` command line, the default value used is `alsa hw:1,0`. 
+Most of the variables in the Python script `nispae.py` do not need to be changed, but depending on the microphone used it will be necessary to change the input audio from the `SoX` command line; the default value used is `alsa hw:1,0`. 
 
-To know which recording devices are currently connected use the command `arecord -l` (if no results are displayed, but the device is properly connected, run it again as `sudo arecord -l`)
+To know which recording devices are currently connected, use the command `arecord -l` (if no results are displayed, but the device is properly connected, run it again as `sudo arecord -l`)
 
 Other variables:
 
@@ -124,10 +124,16 @@ vmax_value = 0 #max dB value for the output image
 spectro = 1
 ```
 
->> Note: As the Librosa deps are installed using Virtual Python Environment, to run the Python script be sure to be in the Virtual Environment (e.g. using `source env/bin/activate`)  
+>> Note: As the Librosa deps are installed using Virtual Python Environment, to run the Python script, be sure to be in the Virtual Environment (e.g. using `source env/bin/activate`)  
 
 ## Visualisation
 
 There is a straightforward example in the `dataViz` folder that demonstrates how to consume spectrogram images from MQTT. Whenever a message is received, a new `img` element is created and appended to the `image-container` div. 
 
->>Note: Broker address (as `ws` WebSocket or `wss` Secure WebSocket) and port need to be changes.
+>>Note: Broker address (as `ws` WebSocket or `wss` Secure WebSocket) and port need to be changed.
+
+## License
+
+This project is licensed under the MIT License. Please note that it depends on SoX, which is licensed under GPLv2. Users must install SoX separately and comply with its license when using this software.
+
+
