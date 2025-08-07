@@ -1,0 +1,38 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: NISPAE Non Intrusive SPectrogram Analyses on the Edge
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Valerio
+    family-names: Signorelli
+    email: v.signorelli@ucl.ac.uk
+    affiliation: UCL
+    orcid: 'https://orcid.org/0000-0002-1023-0366'
+repository-code: 'https://github.com/ucl-casa-ce/nispae'
+url: 'https://connected-environments.org/'
+abstract: >-
+  NISPAE is a Python application for performing
+  Non-Intrusive SPectrogram Analyses on the Edge. It is
+  designed to analyse audio signals in real-time, without
+  the need to collect any audio recordings, and extract
+  relevant features using the short-time Fourier transform
+  (STFT). This solution is particularly useful for recording
+  in public places where concerns regarding privacy in
+  regards to actual audio recording may arise. NISPAE is
+  optimized for running on edge devices with limited
+  computational resources, such as Raspberry Pi (currently
+  tested on Rpi 4 and Rpi 3B+).
+keywords:
+  - spectrogram
+  - python
+  - raspberrypi
+  - mqtt
+  - audio analysis
+  - data visualisation
+  - short-time Fourier transform
+license: MIT
