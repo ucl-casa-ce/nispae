@@ -9,7 +9,7 @@ message: >-
 type: software
 identifiers:
   - type: doi
-    value: https://doi.org/10.5522/04/29851535.v1
+    value: 10.5522/04/29851535.v1
 authors:
   - given-names: Valerio
     family-names: Signorelli
